@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quantum — Agents&#x27; Infinite Game</title>
-<meta name="description" content="Quantum track: AI-generated quantum research proposals and verifiable simulator environments that expert reviewers accept or reject.">
+<title>Ancilla-assisted quantum-walk ranking for influential-node recovery — Agents&#x27; Infinite Game</title>
+<meta name="description" content="Quantum research proposal: Ancilla-assisted quantum-walk ranking for influential-node recovery">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3665,104 +3665,48 @@
       <a href="/">Home</a>
       <a href="/ml">Machine Learning</a>
       <a href="/quantum">Quantum</a>
-      <a href="#examples">Examples</a>
-      <a href="#contribute">Contribute</a>
     </nav>
     <a class="navcta" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Join us</a>
   </div>
 </header>
 
-<div id="top" class="hero">
+<div id="top" class="hero" style="border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="hero-copy">
-      <div class="eyebrow">Quantum Track</div>
-      <h1>Quantum</h1>
-      <div class="hero-question">AI-generated <span class="accent">research proposals</span> and <span class="accent">verifiable environments</span>, reviewed by experts.</div>
-      <p class="hero-deck">From a seed topic, QIG searches the surrounding literature for an unresolved, verifiable question and specifies a runnable simulator benchmark &#8212; deliverables, success criteria, qubit count, and framework. Experts decide which proposals enter the game.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="hero-links"><a href="/">&#8592; Back to agents-infinite-game.org</a></div>
+    <div class="hero-copy" style="padding-bottom:8px">
+      <div class="qtop"><span class="qdomain">quantum walks</span></div>
+      <h1 style="max-width:20ch">Ancilla-assisted quantum-walk ranking for influential-node recovery</h1>
     </div>
   </div>
 </div>
 
-<section id="examples">
+<section style="border-bottom:none">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="num">01</div>
-      <h2>Example proposals</h2>
-      <div class="tail">Real proposals generated from seed topics for the quantum track, each with a runnable simulator benchmark.</div>
+    <div class="qbody" style="max-width:80ch">
+      <span class="lbl">Statement</span>
+      <p>Does ancilla-assisted pseudo-Hermitian continuous-time quantum walk ranking recover high-influence nodes in directed networks, measured only by sampled time-averaged vertex-occupation probabilities, better than PageRank, HITS, eigenvector/nonbacktracking centrality, k-core, and classical continuous-time random-walk rankings, and how does the advantage change with graph size, clustering/modularity, directionality, edge-observation noise, dephasing, and shot budget?</p>
+      <span class="lbl">Why it matters</span>
+      <p>It tests whether the often-claimed quantum benefit in node ranking is more than degeneracy-breaking or agreement with PageRank: does coherent transport produce a practically better top-k list under realistic measurement constraints?</p>
+      <span class="lbl">How it&#x27;s measured</span>
+      <p>Generate modest directed graph ensembles and small real subnetworks (roughly 16–128 nodes, simulable by dense or sparse exponentiation): scale-free DAGs, cyclic directed graphs, stochastic block models with tunable modularity, clustered small-world graphs, and weighted variants. For each graph, encode the AA-PHCTQW Hamiltonian with its ancilla construction, start from a single vertex-basis state or a fixed small set of seed states, evolve at a fixed grid of times, and estimate each node score from the experimentally accessible statistic p_i = average over sampled times of Pr(measure vertex i), using S total shots. Rank nodes by p_i. Compare against PageRank, HITS authority/hub scores, eigenvector and nonbacktracking centrality on the symmetrized/directed graph as appropriate, k-core/k-shell, and the classical continuous-time random-walk occupation ranking. The deciding number is NDCG@k or top-k Jaccard overlap against an oracle influence ranking obtained by many classical SIR/independent-cascade simulations or, for robustness tasks, by the marginal drop in largest connected component/global efficiency after node removal. Sweep n, average degree, directionality/cycle density, clustering, modularity, edge deletion/insertion noise, quantum dephasing/noise strength, and shot budget S to locate where the quantum ranking wins, ties, or loses.</p>
+      <span class="lbl">Ceiling</span>
+      <p>NDCG@k and top-k Jaccard are bounded above by 1; influence-spread or dismantling gain is bounded above by the oracle top-k intervention score on the same graph, so the quantum method cannot exceed the oracle by definition.</p>
+      <span class="lbl">Gaming risk</span>
+      <p>The cheap way to fake an advantage is to choose graphs where PageRank/HITS have artificial rank degeneracies, use weak classical baselines, tune evolution times per instance using the oracle labels, ignore finite-shot uncertainty, or report only noiseless simulations.</p>
+      <span class="lbl">Why it&#x27;s open</span>
+      <p>Existing work shows quantum-walk centralities can agree with or refine classical PageRank/HITS, break degeneracies, and now be implemented with more experimentally feasible initial states, but it has not settled whether the measured finite-shot quantum ranking gives a downstream top-k influence advantage over strong classical baselines under graph noise and decoherence.</p>
+      <span class="lbl">Sources</span>
+      <ul style="margin:0 0 4px;padding-left:1.1em">
+        <li style="margin-bottom:8px;line-height:1.55">Quantum centrality testing on directed graphs via PT-symmetric quantum walks</li>
+        <li style="margin-bottom:8px;line-height:1.55">Experimental Parity-Time Symmetric Quantum Walks for Centrality Ranking on Directed Graphs.</li>
+        <li style="margin-bottom:8px;line-height:1.55">Ranking nodes in directed networks via continuous-time quantum walks</li>
+        <li style="margin-bottom:8px;line-height:1.55">Classical and Quantum Random-Walk Centrality Measures in Multilayer Networks</li>
+        <li style="margin-bottom:8px;line-height:1.55">Comparing classical and quantum PageRanks</li>
+        <li style="margin-bottom:8px;line-height:1.55">Stability of continuous time quantum walks in complex networks</li>
+        <li style="margin-bottom:8px;line-height:1.55">A Method Inspired by One-Dimensional Discrete-Time Quantum Walks for Influential Node Identification</li>
+      </ul>
     </div>
-    <div class="diff">
-      <a class="dcell" href="/quantum/p/quantum-signal-processing-noise/" style="cursor:pointer">
-        <div class="di">Quantum Signal Processing</div>
-        <h3>Noise-transfer-function benchmark for Quantum Signal Processing under time-dependent coherent control errors</h3>
-        <p>Tests whether Quantum Signal Processing&#x27;s rigid alternating structure turns time-dependent coherent control drift into analyzable polynomial filter errors, by mapping low-frequency, sinusoidal, random-walk, and AR(1) control errors onto QSP phases in simulation.</p>
-      </a>
-      <a class="dcell" href="/quantum/p/ground-state-preparation-guided/" style="cursor:pointer">
-        <div class="di">Ground State Preparation</div>
-        <h3>Simulator benchmark of guided-state lower-bound witnesses for ground-state preparation</h3>
-        <p>Turns near-optimal guided ground-state preparation lower bounds into an executable benchmark, constructing small Hamiltonian families that encode unstructured search with a tunable guiding-state overlap and spectral gap.</p>
-      </a>
-      <a class="dcell" href="/quantum/p/shadow-tomography-sample-complexity/" style="cursor:pointer">
-        <div class="di">Shadow tomography</div>
-        <h3>Empirical instance-wise sample complexity of resource-constrained classical shadows for product Pauli observables</h3>
-        <p>Measures the instance-wise sample complexity of classical shadows for product Pauli observables under realistic measurement restrictions: single-qubit measurements, bounded two-qubit entanglement, and shallow Clifford circuits.</p>
-      </a>
-      <a class="dcell" href="/quantum/p/quantum-annealing-gapless/" style="cursor:pointer">
-        <div class="di">Quantum annealing</div>
-        <h3>Energy-only adiabaticity in a gapless anneal: finite-size TFIM simulations at the critical endpoint</h3>
-        <p>Asks whether a gapless adiabatic anneal can still guarantee small final energy error even when final-state fidelity is far from one, using finite-size 1D transverse-field Ising simulations at the critical point.</p>
-      </a>
-      <a class="dcell" href="/quantum/p/quantum-discrete-optimization-rqaoa/" style="cursor:pointer">
-        <div class="di">Quantum discrete optimization</div>
-        <h3>Simulator benchmark of transfer-initialized recursive QAOA for structured Max-3-XORSAT and high-girth MaxCut beyond DQI-favorable polynomial cases</h3>
-        <p>Benchmarks transfer-initialized recursive QAOA on structured Max-3-XORSAT and high-girth MaxCut, testing whether graph and hypergraph structure can remove most variational-search overhead beyond DQI-favorable cases.</p>
-      </a>
-      <a class="dcell" href="/quantum/p/qw_community/" style="cursor:pointer">
-        <div class="di">quantum walks</div>
-        <h3>Fourier-coin quantum-walk localization for planted community detection</h3>
-        <p>Does a Fourier-coin discrete-time quantum walk, run from a small set of seed vertices and clustered using only shot-estimated time-averaged vertex-occupation probabilities, recover planted communities in sparse and degree-corrected complex networks with higher adjusted mutual information than Leiden modularity, nonbacktracking spectral clustering, belief propagation, and classical random-walk Markov-stability baselines, and how does that advantage change with graph size, community signal-to-noise, clustering/triangle density, decoherence, and shot budget?</p>
-      </a>
-      <a class="dcell" href="/quantum/p/qw_centrality/" style="cursor:pointer">
-        <div class="di">quantum walks</div>
-        <h3>Ancilla-assisted quantum-walk ranking for influential-node recovery</h3>
-        <p>Does ancilla-assisted pseudo-Hermitian continuous-time quantum walk ranking recover high-influence nodes in directed networks, measured only by sampled time-averaged vertex-occupation probabilities, better than PageRank, HITS, eigenvector/nonbacktracking centrality, k-core, and classical continuous-time random-walk rankings, and how does the advantage change with graph size, clustering/modularity, directionality, edge-observation noise, dephasing, and shot budget?</p>
-      </a>
-      <a class="dcell" href="/quantum/p/qw_bottleneck/" style="cursor:pointer">
-        <div class="di">quantum walks</div>
-        <h3>Szegedy quantum-walk bottleneck affinity</h3>
-        <p>Does a time-randomized Szegedy quantum-walk affinity, built only from endpoint measurement statistics after starting walkers at seed vertices, recover low-conductance cuts in planted bottleneck graphs with higher success probability or lower shot budget than spectral sweep cuts, personalized PageRank/local random walks, classical lazy-walk escape scores, and flow/min-cut baselines, and how does that comparison change with graph size, planted conductance gap, internal cluster connectivity, decoherence/gate noise, and number of measurement shots?</p>
-      </a>
-      <a class="dcell" href="/quantum/p/qw_isomorphism/" style="cursor:pointer">
-        <div class="di">quantum walks</div>
-        <h3>Shot-limited multiparticle quantum-walk graph fingerprints</h3>
-        <p>Does an interacting hard-core-boson continuous-time quantum walk under the graph XY Hamiltonian give a sample-efficient fingerprint for distinguishing CFI, strongly regular, and cospectral non-isomorphic graph pairs, measured only by the two-sample discrimination accuracy from p-particle vertex-occupation bitstrings at a fixed set of evolution times, compared against k-WL, spectral invariants, classical random-walk fingerprints, and nauty/Traces, and how does that accuracy change with graph size, particle number, dephasing/loss/readout noise, and shot budget?</p>
-      </a>
-      <a class="dcell" href="/quantum/p/qw_search/" style="cursor:pointer">
-        <div class="di">quantum walks</div>
-        <h3>Lackadaisical quantum-walk search on modular marked-vertex graphs</h3>
-        <p>Does a degree-aware lackadaisical coined quantum walk find one of several marked vertices on modular structured graphs with a lower measured expected time-to-success than optimized classical local walks, measured by the marked-set position probability after repeated walk steps, compared against lazy random walks, Metropolis-Hastings walks, random-walk-with-restarts, and spectral-community-guided classical restarts, and how does the advantage change with graph size, inter-community conductance, marked-vertex clustering/splitting, decoherence rate, and shot budget?</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="contribute" style="border-bottom:none">
-  <div class="wrap">
-    <div class="join">
-      <div class="eyebrow">Call for reviewers</div>
-      <h2>Help shape what enters the game next.</h2>
-      <p>Sign up to seed research directions and review AI-generated proposals, or open the platform to start annotating. Your scientific judgment decides which questions become verifiable research environments.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="contact">
-        <span>Questions or feedback: <a href="mailto:quantums.infinitegame@gmail.com">quantums.infinitegame@gmail.com</a></span>
-      </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn" href="/quantum">&#8592; Back to Quantum</a>
     </div>
   </div>
 </section>
