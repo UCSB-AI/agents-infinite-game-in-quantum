@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Machine Learning — Agents&#x27; Infinite Game</title>
-<meta name="description" content="Machine Learning track: AI-generated ML research questions and verifiable environments that expert reviewers accept or reject.">
+<title>Task-agnostic lifelong learning — Agents&#x27; Infinite Game</title>
+<meta name="description" content="ML research proposal: Task-agnostic lifelong learning">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3665,84 +3665,45 @@
       <a href="/">Home</a>
       <a href="/ml">Machine Learning</a>
       <a href="/quantum">Quantum</a>
-      <a href="#examples">Examples</a>
-      <a href="#contribute">Contribute</a>
     </nav>
     <a class="navcta" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Join us</a>
   </div>
 </header>
 
-<div id="top" class="hero">
+<div id="top" class="hero" style="border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="hero-copy">
-      <div class="eyebrow">Machine Learning Track</div>
-      <h1>Machine<br>Learning</h1>
-      <div class="hero-question">AI-generated <span class="accent">research questions</span> and <span class="accent">verifiable environments</span>, reviewed by experts.</div>
-      <p class="hero-deck">QIG proposes open ML research problems &#8212; spanning agents, self-improvement, safety, and scientific discovery &#8212; then builds the environments that make them solvable and scorable. Experts decide which questions are worth pursuing.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="hero-links"><a href="/">&#8592; Back to agents-infinite-game.org</a></div>
+    <div class="hero-copy" style="padding-bottom:8px">
+      <div class="qtop"><span class="qdomain">continual learning</span></div>
+      <h1 style="max-width:20ch">Task-agnostic lifelong learning</h1>
     </div>
   </div>
 </div>
 
-<section id="examples">
+<section style="border-bottom:none">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="num">01</div>
-      <h2>Example proposals</h2>
-      <div class="tail">Real proposals generated for the ML track. Reviewers accept, refine, or reject each one.</div>
+    <div class="qbody" style="max-width:80ch">
+      <span class="lbl">Statement</span>
+      <p>A learner that turns a nonstationary stream into durable skills, matching a joint-training oracle at every prefix while seeing each example once and receiving no task identity.</p>
+      <span class="lbl">Why it matters</span>
+      <p>This would break the stability-plasticity limit: new learning would no longer require erasing old skills, storing the past, or restarting training.</p>
+      <span class="lbl">How it&#x27;s measured</span>
+      <p>Run a lifelong learning marathon with a procedurally generated stream of task and domain shifts across language, vision, and control. The learner receives each training example once, with no task boundary labels and no access to raw past data. After each stream segment, a hidden ledger adds tests for the new skills and re-tests all earlier skills. The number is the retained-oracle horizon: the largest number of shifts for which the learner stays within 95% of an offline joint-training oracle on both the mean score and the 5th-percentile score over all skills seen so far, under a fixed per-example update-compute budget.</p>
+      <span class="lbl">Ceiling</span>
+      <p>No fixed ceiling. The stream can be extended indefinitely, and progress is measured by how far the retained-oracle horizon grows before forgetting or failure to learn new skills appears.</p>
+      <span class="lbl">Gaming risk</span>
+      <p>Overfitting to the generator or hiding raw replay in a compressed memory, rather than learning representations and updates that truly preserve old skills while absorbing new ones.</p>
+      <span class="lbl">Why it&#x27;s open</span>
+      <p>Recent surveys still identify catastrophic forgetting, long-horizon stability, task heterogeneity, inaccessible past data, task-boundary assumptions, and small-scale evaluation as unresolved barriers for foundation-model continual learning.</p>
+      <span class="lbl">Sources</span>
+      <ul style="margin:0 0 4px;padding-left:1.1em">
+        <li style="margin-bottom:8px;line-height:1.55">Recent Advances of Foundation Language Models-based Continual Learning: A Survey</li>
+        <li style="margin-bottom:8px;line-height:1.55">Towards Lifelong Learning of Large Language Models: A Survey</li>
+        <li style="margin-bottom:8px;line-height:1.55">Lifelong Representations: A Survey on Continual Self-Supervised Learning for Vision Models</li>
+        <li style="margin-bottom:8px;line-height:1.55">Addressing catastrophic forgetting in class-incremental learning—a survey</li>
+      </ul>
     </div>
-    <div class="diff">
-      <a class="dcell" href="/ml/p/agentic_1/" style="cursor:pointer">
-        <div class="di">computer-use agents</div>
-        <h3>Screen-only computer use at human horizons</h3>
-        <p>A single policy keeps completing longer real-software workflows from pixels, mouse, and keyboard alone, across unfamiliar apps and operating systems, with no app APIs, accessibility tree, scripts, or human rescue.</p>
-      </a>
-      <a class="dcell" href="/ml/p/agentic_3/" style="cursor:pointer">
-        <div class="di">deep research agents</div>
-        <h3>Evidence-ledger research agents</h3>
-        <p>A deep research agent that keeps a public ledger of claims, gaps, and cited evidence, recovering more expert facts and inferences with each search while keeping unsupported claims below a fixed rate.</p>
-      </a>
-      <a class="dcell" href="/ml/p/genml_1/" style="cursor:pointer">
-        <div class="di">optimizers</div>
-        <h3>Turnkey neural network optimization</h3>
-        <p>One fixed training algorithm reaches the best tuned AdamW generalization loss with 10× fewer training FLOPs across new model families, data modalities, and training horizons, without per-workload tuning or horizon-specific schedules.</p>
-      </a>
-      <a class="dcell" href="/ml/p/genml_2/" style="cursor:pointer">
-        <div class="di">continual learning</div>
-        <h3>Task-agnostic lifelong learning</h3>
-        <p>A learner that turns a nonstationary stream into durable skills, matching a joint-training oracle at every prefix while seeing each example once and receiving no task identity.</p>
-      </a>
-      <a class="dcell" href="/ml/p/safety_1/" style="cursor:pointer">
-        <div class="di">scalable oversight</div>
-        <h3>Weak oversight that still elicits truth</h3>
-        <p>A strong model that matches gold-supervised accuracy while trained only on weak oversight that is systematically wrong on the hard cases.</p>
-      </a>
-      <a class="dcell" href="/ml/p/interp_1/" style="cursor:pointer">
-        <div class="di">mechanistic interp</div>
-        <h3>Mechanistic compression</h3>
-        <p>A large trained network compressed into an executable causal circuit that predicts its outputs and the effects of internal edits on unseen inputs, with no task-specific hand labels.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="contribute" style="border-bottom:none">
-  <div class="wrap">
-    <div class="join">
-      <div class="eyebrow">Call for reviewers</div>
-      <h2>Help shape what enters the game next.</h2>
-      <p>Sign up to seed research directions and review AI-generated proposals, or open the platform to start annotating. Your scientific judgment decides which questions become verifiable research environments.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="contact">
-        <span>Questions or feedback: <a href="mailto:quantums.infinitegame@gmail.com">quantums.infinitegame@gmail.com</a></span>
-      </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn" href="/ml">&#8592; Back to Machine Learning</a>
     </div>
   </div>
 </section>

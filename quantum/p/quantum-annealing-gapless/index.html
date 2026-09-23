@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Machine Learning — Agents&#x27; Infinite Game</title>
-<meta name="description" content="Machine Learning track: AI-generated ML research questions and verifiable environments that expert reviewers accept or reject.">
+<title>Energy-only adiabaticity in a gapless anneal: finite-size TFIM simulations at the critical endpoint — Agents&#x27; Infinite Game</title>
+<meta name="description" content="Quantum research proposal and environment: Energy-only adiabaticity in a gapless anneal: finite-size TFIM simulations at the critical endpoint">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3665,84 +3665,39 @@
       <a href="/">Home</a>
       <a href="/ml">Machine Learning</a>
       <a href="/quantum">Quantum</a>
-      <a href="#examples">Examples</a>
-      <a href="#contribute">Contribute</a>
     </nav>
     <a class="navcta" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Join us</a>
   </div>
 </header>
 
-<div id="top" class="hero">
+<div id="top" class="hero" style="border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="hero-copy">
-      <div class="eyebrow">Machine Learning Track</div>
-      <h1>Machine<br>Learning</h1>
-      <div class="hero-question">AI-generated <span class="accent">research questions</span> and <span class="accent">verifiable environments</span>, reviewed by experts.</div>
-      <p class="hero-deck">QIG proposes open ML research problems &#8212; spanning agents, self-improvement, safety, and scientific discovery &#8212; then builds the environments that make them solvable and scorable. Experts decide which questions are worth pursuing.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="hero-links"><a href="/">&#8592; Back to agents-infinite-game.org</a></div>
+    <div class="hero-copy" style="padding-bottom:8px">
+      <div class="qtop"><span class="qdomain">Quantum annealing</span></div>
+      <h1 style="max-width:20ch">Energy-only adiabaticity in a gapless anneal: finite-size TFIM simulations at the critical endpoint</h1>
+      <div class="chips" style="margin-top:6px"><span class="chip">20 qubits</span> <span class="chip">pennylane-lightning</span> <span class="chip">~150 min on CPU</span></div>
     </div>
   </div>
 </div>
 
-<section id="examples">
+<section style="border-bottom:none">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="num">01</div>
-      <h2>Example proposals</h2>
-      <div class="tail">Real proposals generated for the ML track. Reviewers accept, refine, or reject each one.</div>
+    <div class="qbody" style="max-width:80ch">
+      <span class="lbl">Motivation</span>
+      <p>The seed question asks whether a gapless adiabatic procedure can still guarantee small final energy error even when final-state fidelity is not close to one. A tractable way to probe this is the 1D transverse-field Ising model (TFIM), whose thermodynamic critical point is gapless and whose finite-size gaps shrink with system size. The task will simulate anneals from a gapped paramagnet to the critical Hamiltonian and compare final excess energy density against ground-state fidelity under schedules with different endpoint smoothness/changing rates.</p>
+      <span class="lbl">What the environment tests</span>
+      <ul style="margin:0 0 4px;padding-left:1.1em">
+        <li style="margin-bottom:8px;line-height:1.55">Complete results are produced for all schedules, system sizes up to 20 qubits, and at least 8 runtime values per schedule.</li>
+        <li style="margin-bottom:8px;line-height:1.55">The known qualitative Kibble-Zurek benchmark is reproduced: slower ramps reduce residual energy while final fidelity degrades with system size near the critical endpoint.</li>
+        <li style="margin-bottom:8px;line-height:1.55">At least one regime is identified where the excess energy density is below 1e-2 per spin but fidelity is below 0.5 for 16 or more qubits, showing energy closeness without state closeness.</li>
+        <li style="margin-bottom:8px;line-height:1.55">Schedule families are compared to test whether smoother, lower-rate schedules reduce excess energy at fixed runtime by at least 20% versus the linear schedule for any size at or above 14 qubits; otherwise a negative result with confidence intervals is reported.</li>
+        <li style="margin-bottom:8px;line-height:1.55">Numerical accuracy is validated by showing the excess energy converges within 5% when the Trotter step count is doubled.</li>
+      </ul>
+      <span class="lbl">What it builds</span>
+      <p>A finite-size transverse-field Ising benchmark that Trotterizes real-time annealing from a gapped paramagnet toward the gapless critical point for open chains of 6 to 20 spins, under linear, cubic smoothstep, quintic smootherstep, and a gap-aware schedule. For each run it records the excess energy density, ground-state fidelity, energy variance, instantaneous minimum gap, and a schedule-roughness metric, then studies excess energy versus runtime, infidelity versus runtime, and finite-size scaling to locate regimes where the final energy is accurate even though the state is not.</p>
     </div>
-    <div class="diff">
-      <a class="dcell" href="/ml/p/agentic_1/" style="cursor:pointer">
-        <div class="di">computer-use agents</div>
-        <h3>Screen-only computer use at human horizons</h3>
-        <p>A single policy keeps completing longer real-software workflows from pixels, mouse, and keyboard alone, across unfamiliar apps and operating systems, with no app APIs, accessibility tree, scripts, or human rescue.</p>
-      </a>
-      <a class="dcell" href="/ml/p/agentic_3/" style="cursor:pointer">
-        <div class="di">deep research agents</div>
-        <h3>Evidence-ledger research agents</h3>
-        <p>A deep research agent that keeps a public ledger of claims, gaps, and cited evidence, recovering more expert facts and inferences with each search while keeping unsupported claims below a fixed rate.</p>
-      </a>
-      <a class="dcell" href="/ml/p/genml_1/" style="cursor:pointer">
-        <div class="di">optimizers</div>
-        <h3>Turnkey neural network optimization</h3>
-        <p>One fixed training algorithm reaches the best tuned AdamW generalization loss with 10× fewer training FLOPs across new model families, data modalities, and training horizons, without per-workload tuning or horizon-specific schedules.</p>
-      </a>
-      <a class="dcell" href="/ml/p/genml_2/" style="cursor:pointer">
-        <div class="di">continual learning</div>
-        <h3>Task-agnostic lifelong learning</h3>
-        <p>A learner that turns a nonstationary stream into durable skills, matching a joint-training oracle at every prefix while seeing each example once and receiving no task identity.</p>
-      </a>
-      <a class="dcell" href="/ml/p/safety_1/" style="cursor:pointer">
-        <div class="di">scalable oversight</div>
-        <h3>Weak oversight that still elicits truth</h3>
-        <p>A strong model that matches gold-supervised accuracy while trained only on weak oversight that is systematically wrong on the hard cases.</p>
-      </a>
-      <a class="dcell" href="/ml/p/interp_1/" style="cursor:pointer">
-        <div class="di">mechanistic interp</div>
-        <h3>Mechanistic compression</h3>
-        <p>A large trained network compressed into an executable causal circuit that predicts its outputs and the effects of internal edits on unseen inputs, with no task-specific hand labels.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="contribute" style="border-bottom:none">
-  <div class="wrap">
-    <div class="join">
-      <div class="eyebrow">Call for reviewers</div>
-      <h2>Help shape what enters the game next.</h2>
-      <p>Sign up to seed research directions and review AI-generated proposals, or open the platform to start annotating. Your scientific judgment decides which questions become verifiable research environments.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeW4HDgUz3AX8sjtsennoXIUYPEUvsOXWSGRzGr00cmA7pU9Q/viewform" target="_blank" rel="noopener">Sign up to contribute <span class="arw">&#8594;</span></a>
-        <a class="btn" href="https://annotate.agents-infinite-game.org/" target="_blank" rel="noopener">Open the annotation platform</a>
-      </div>
-      <div class="contact">
-        <span>Questions or feedback: <a href="mailto:quantums.infinitegame@gmail.com">quantums.infinitegame@gmail.com</a></span>
-      </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn" href="/quantum">&#8592; Back to Quantum</a>
     </div>
   </div>
 </section>
